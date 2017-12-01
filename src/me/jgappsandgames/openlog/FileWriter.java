@@ -81,6 +81,7 @@ public class FileWriter implements Writer {
 
         try {
             writer.append(text);
+            writer.append(System.lineSeparator());
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

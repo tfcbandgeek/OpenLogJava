@@ -1,5 +1,7 @@
 package me.jgappsandgames.openlog;
 
+import java.util.ArrayList;
+
 /**
  * Exception Class
  *
@@ -7,7 +9,7 @@ package me.jgappsandgames.openlog;
  */
 public class Exception {
     public static boolean debug = true;
-    public static Writer writer = ConsoleWriter.getInstance();
+    public static ArrayList<Writer> writers = new ArrayList<>();
 
     public static final int EXPECTED = 11;
     public static final int FIX = 12;
@@ -15,16 +17,16 @@ public class Exception {
 
     // Write Expected (Debug Level Only)
     public static void e(String key, String data) {
-        writer.write(EXPECTED, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(EXPECTED, key, data);
     }
 
     // Write Fix (Debug Level Only)
     public static void f(String key, String data) {
-        writer.write(FIX, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(FIX, key, data);
     }
 
     // Write Problem (Always)
     public static void p(String key, String data) {
-        writer.write(PROBLEM, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(PROBLEM, key, data);
     }
 }

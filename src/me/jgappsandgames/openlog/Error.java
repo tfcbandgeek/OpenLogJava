@@ -1,5 +1,7 @@
 package me.jgappsandgames.openlog;
 
+import java.util.ArrayList;
+
 /**
  * Error Class
  *
@@ -7,18 +9,18 @@ package me.jgappsandgames.openlog;
  */
 public class Error {
     public static boolean debug = true;
-    public static Writer writer = ConsoleWriter.getInstance();
+    public static ArrayList<Writer> writers = new ArrayList<>();
 
     public static final int DEBUG_ERROR = 21;
     public static final int ERROR = 22;
 
     // Write Debug (Always)
     public static void d(String key, String data) {
-        writer.write(DEBUG_ERROR, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(DEBUG_ERROR, key, data);
     }
 
     // Write Error (Always)
     public static void e(String key, String data) {
-        writer.write(ERROR, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(ERROR, key, data);
     }
 }

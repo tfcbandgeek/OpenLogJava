@@ -1,5 +1,7 @@
 package me.jgappsandgames.openlog;
 
+import java.util.ArrayList;
+
 /**
  * Log Class
  *
@@ -7,7 +9,7 @@ package me.jgappsandgames.openlog;
  */
 public class Log {
     public static boolean debug = true;
-    public static Writer writer = ConsoleWriter.getInstance();
+    public static ArrayList<Writer> writers = new ArrayList<>();
 
     // Log Levels
     public static final int VERBOSE = 1;
@@ -19,26 +21,26 @@ public class Log {
 
     // Write Verbose (Debug Level Only)
     public static void v(String key, String data) {
-        writer.write(VERBOSE, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(VERBOSE, key, data);
     }
 
     // Write Debug (Debug Level Only)
     public static void d(String key, String data) {
-        writer.write(DEBUG, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(DEBUG, key, data);
     }
 
     // Write Track (Debug Level Only)
     public static void t(String key, String data) {
-        writer.write(TRACK, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(TRACK, key, data);
     }
 
     // Write Info (Always)
     public static void i(String key, String data) {
-        writer.write(INFO, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(INFO, key, data);
     }
 
     // Write Warn (Always)
     public static void w(String key, String data) {
-        writer.write(WARN, key, data);
+        if (writers.size() != 0) for (Writer writer : writers) writer.write(WARN, key, data);
     }
 }
