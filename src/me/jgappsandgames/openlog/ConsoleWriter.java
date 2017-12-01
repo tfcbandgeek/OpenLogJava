@@ -62,7 +62,7 @@ public class ConsoleWriter implements Writer {
         // Add the Key
         key = key + "                    ";
         key = key.substring(0, 7);
-        key = "[" + key + "]";
+        key = "[" + key + "] ";
         text.append(key);
 
         // Add The Data

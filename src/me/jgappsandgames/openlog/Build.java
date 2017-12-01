@@ -1,6 +1,6 @@
 package me.jgappsandgames.openlog;
 
 public class Build {
-    private static final int build = 2;
-    private static final String version = "0.1.1";
+    public static final int build = 3;
+    public static final String version = "0.1.2";
 }
