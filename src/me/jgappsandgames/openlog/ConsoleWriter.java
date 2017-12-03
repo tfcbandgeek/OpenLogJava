@@ -76,10 +76,9 @@ public class ConsoleWriter implements Writer {
         // Does Nothing At the Moment
     }
 
-    // Helper Methods
-
     // Singleton Instance
-    public static ConsoleWriter writer = null;
+    private static ConsoleWriter writer = null;
+
     public static ConsoleWriter getInstance() {
         if (writer == null) writer = new ConsoleWriter();
 
