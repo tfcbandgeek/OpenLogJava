@@ -32,7 +32,9 @@ public class ConsoleWriter implements Writer {
         StringBuilder text = new StringBuilder();
 
         // Add The Prefix
-        text.append("[OpenLog] ");
+        text.append("[")
+                .append(Config.getInstance().getPrefix())
+                .append("] ");
 
         // Add the Code
         switch (code) {

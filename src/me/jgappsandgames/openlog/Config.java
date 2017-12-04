@@ -45,7 +45,7 @@ public class Config {
      */
     private Writer secondary_writer;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Debug Run Variable ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Run Variables ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
      * Mark True if this run is a debug run
      * More Log, Exception, Error Levels are Ran
@@ -53,6 +53,13 @@ public class Config {
      * DEFAULT: true
      */
     private boolean debug;
+
+    /**
+     * Holds the Prefix for the Libraries Writing
+     *
+     * DEFAULT: "OpenLog"
+     */
+    private String prefix;
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Initializer ---- ---- ---- ---- ---- ---- ---- ---- ----
 
@@ -77,6 +84,8 @@ public class Config {
         primary_writer = ConsoleWriter.getInstance();
 
         debug = true;
+
+        prefix = "OpenLog";
     }
 
     /**
@@ -174,23 +183,17 @@ public class Config {
         return debug;
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
-     * set(File) Deprecated
+     * getPrefix()
      *
-     * Sets A Universal File for the Logs
-     * @param file The new File Location
-     * @return This Config Instance, for Chaining Commands
+     * Returns the Library Prefix
+     * @return
      */
-    @Deprecated
-    public Config set(File file) {
-        all_file = file;
-        log_file = file;
-        except_file = file;
-        error_file = file;
-        return this;
+    public String getPrefix() {
+        return prefix;
     }
 
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
      * setFiles(File)
      *
@@ -255,20 +258,6 @@ public class Config {
     }
 
     /**
-     * setWriters(Writer) Deprecated
-     *
-     * Sets the Same Writer for Both Instances
-     * @param writer The New Writer
-     * @return The Config Instance, For Chaining Commands
-     */
-    @Deprecated
-    public Config setWriters(Writer writer) {
-        primary_writer = writer;
-        secondary_writer = writer;
-        return this;
-    }
-
-    /**
      * setPrimaryWriter(Writer)
      *
      * Sets the Writer for the Primary Writer
@@ -304,6 +293,16 @@ public class Config {
         return this;
     }
 
+    /**
+     * setPrefix(String)
+     * @param prefix
+     * @return
+     */
+    public Config setPrefix(String prefix) {
+        this.prefix = prefix;
+        return this;
+    }
+
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
      * The Config Instance
@@ -320,7 +319,7 @@ public class Config {
     @Deprecated
     public static Config generateConfig(File location) {
         if (!location.isDirectory()) location.mkdirs();
-        return new Config().set(location);
+        return new Config().setFiles(location);
     }
 
     /**
