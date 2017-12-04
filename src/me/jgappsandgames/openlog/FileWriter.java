@@ -41,10 +41,10 @@ public class FileWriter implements Writer {
     @Override
     public void load() {
         try {
-            all = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getAll(), String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) + ".all")));
-            log = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getLog(), String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) + ".log")));
-            except = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getExcept(), String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) + ".except")));
-            error = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getError(), String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) + ".error")));
+            all = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getAll(), Calendar.getInstance().getTime().toString() + ".all")));
+            log = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getLog(), Calendar.getInstance().getTime().toString() + ".log")));
+            except = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getExcept(), Calendar.getInstance().getTime().toString() + ".except")));
+            error = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getError(), Calendar.getInstance().getTime().toString() + ".error")));
         } catch (IOException e) {
             e.printStackTrace();
         }
