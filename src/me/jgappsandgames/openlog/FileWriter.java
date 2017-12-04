@@ -41,10 +41,10 @@ public class FileWriter implements Writer {
     @Override
     public void load() {
         try {
-            all = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getAll(), Calendar.getInstance().getTime().toString() + ".all")));
-            log = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getLog(), Calendar.getInstance().getTime().toString() + ".log")));
-            except = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getExcept(), Calendar.getInstance().getTime().toString() + ".except")));
-            error = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getError(), Calendar.getInstance().getTime().toString() + ".error")));
+            all = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getAll(), getDayString() + ".all")));
+            log = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getLog(), getDayString() + ".log")));
+            except = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getExcept(), getDayString() + ".except")));
+            error = new BufferedWriter(new java.io.FileWriter(new File(Config.getInstance().getError(), getDayString() + ".error")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,6 +162,19 @@ public class FileWriter implements Writer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Helper Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    /**
+     * getDayString()
+     *
+     * Get the Day String for Filenames
+     */
+    private String getDayString() {
+        return String.valueOf(Calendar.getInstance().get(Calendar.YEAR)) + "_" +
+                String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_YEAR)) + "_" +
+                String.valueOf(Calendar.getInstance().get(Calendar.HOUR)) + "_" +
+                String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
