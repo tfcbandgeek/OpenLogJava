@@ -14,14 +14,17 @@ public class Config {
      * Location for Saving the Master List for Logs, Exceptions, and Errors (Combined)
      */
     private File all_file;
+
     /**
      * Location for Saving the Log File
      */
     private File log_file;
+
     /**
      * Location for saving the Exception File
      */
     private File except_file;
+
     /**
      * Location for saving the Error File
      */
@@ -34,12 +37,22 @@ public class Config {
      * DEFAULT: ConsoleWriter
      */
     private Writer primary_writer;
+
     /**
      * The Secondary Writer for the Library
      *
      * DEFAULT: NULL
      */
     private Writer secondary_writer;
+
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Debug Run Variable ---- ---- ---- ---- ---- ---- ---- ---- ----
+    /**
+     * Mark True if this run is a debug run
+     * More Log, Exception, Error Levels are Ran
+     *
+     * DEFAULT: true
+     */
+    private boolean debug;
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Initializer ---- ---- ---- ---- ---- ---- ---- ---- ----
 
@@ -62,6 +75,31 @@ public class Config {
         if (!error_file.isDirectory()) error_file.mkdirs();
 
         primary_writer = ConsoleWriter.getInstance();
+
+        debug = true;
+    }
+
+    /**
+     * Initializer
+     *
+     * Sets the Save Locations, Creates the Directory (If necessary), and sets the default writer
+     */
+    private Config(boolean debug) {
+        // Set Locations
+        all_file = new File("openlog");
+        log_file = new File("openlog");
+        except_file = new File("openlog");
+        error_file = new File("openlog");
+
+        // Create Directories if it does not exist yet
+        if (!all_file.isDirectory()) all_file.mkdirs();
+        if (!log_file.isDirectory()) log_file.mkdirs();
+        if (!except_file.isDirectory()) except_file.mkdirs();
+        if (!error_file.isDirectory()) error_file.mkdirs();
+
+        primary_writer = ConsoleWriter.getInstance();
+
+        this.debug = debug;
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Getters ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -124,6 +162,16 @@ public class Config {
      */
     public Writer getSecondaryWriter() {
         return secondary_writer;
+    }
+
+    /**
+     * isDebug()
+     *
+     * Returns if the is a Debug Run or Not
+     * @return
+     */
+    public boolean isDebug() {
+        return debug;
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -241,6 +289,18 @@ public class Config {
      */
     public Config setSecondaryWriter(Writer writer) {
         secondary_writer = writer;
+        return this;
+    }
+
+    /**
+     * setDebug(Boolean)
+     *
+     * Called to set if this is a Debug Run
+     * @param debug Debug Status
+     * @return The Config Instance, For Chaining Commands
+     */
+    public Config setDebug(boolean debug) {
+        this.debug = debug;
         return this;
     }
 

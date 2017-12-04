@@ -30,8 +30,10 @@ public class Exception {
      * @param data
      */
     public static void e(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(EXPECTED, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(EXPECTED, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(EXPECTED, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(EXPECTED, key, data);
+        }
     }
 
     /**
@@ -41,8 +43,10 @@ public class Exception {
      * @param data
      */
     public static void f(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(FIX, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(FIX, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(FIX, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(FIX, key, data);
+        }
     }
 
     /**

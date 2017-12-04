@@ -20,14 +20,16 @@ public class Error {
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Write Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
 
     /**
-     * Write Debug (Always)
+     * Write Debug (Debug Only)
      *
      * @param key
      * @param data
      */
     public static void d(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(DEBUG_ERROR, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(DEBUG_ERROR, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(DEBUG_ERROR, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(DEBUG_ERROR, key, data);
+        }
     }
 
     /**

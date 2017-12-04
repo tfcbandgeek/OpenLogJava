@@ -41,8 +41,10 @@ public class Log {
      * @param data
      */
     public static void v(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(VERBOSE, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(VERBOSE, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(VERBOSE, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(VERBOSE, key, data);
+        }
     }
 
     /**
@@ -52,8 +54,10 @@ public class Log {
      * @param data
      */
     public static void d(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(DEBUG, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(DEBUG, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(DEBUG, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(DEBUG, key, data);
+        }
     }
 
     /**
@@ -63,8 +67,10 @@ public class Log {
      * @param data
      */
     public static void t(String key, String data) {
-        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(TRACK, key, data);
-        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(TRACK, key, data);
+        if (Config.getInstance().isDebug()) {
+            if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(TRACK, key, data);
+            if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(TRACK, key, data);
+        }
     }
 
     /**
