@@ -1,12 +1,32 @@
 package me.jgappsandgames.openlog;
 
+/**
+ * ConsoleWriter Implements: Writer
+ *
+ * Writes to the Console
+ */
 public class ConsoleWriter implements Writer {
-    // Visible Methods
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Visible Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+    /**
+     * load()
+     *
+     * Not Needed for the ConsoleWriter (Empty Statement)
+     */
     @Override
     public void load() {
 
     }
 
+    /**
+     * write(Int, String, Data)
+     *
+     * Method used to write the data to the Console
+     *
+     * @param code Log Level
+     * @param key The Key
+     * @param data The Actual problem/text
+     */
     @Override
     public void write(int code, String key, String data) {
         StringBuilder text = new StringBuilder();
@@ -71,14 +91,28 @@ public class ConsoleWriter implements Writer {
         System.out.println(text.toString());
     }
 
+    /**
+     * clear()
+     *
+     * Does Nothing at the Moment
+     */
     @Override
     public void clear() {
         // Does Nothing At the Moment
     }
 
-    // Singleton Instance
+    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton Instance ---- ---- ---- ---- ---- ---- ---- ---- ----
+    /**
+     * The ConsoleWriter Instance
+     */
     private static ConsoleWriter writer = null;
 
+    /**
+     * getInstance()
+     *
+     * Gets the ConsoleWriter Instance
+     * @return
+     */
     public static ConsoleWriter getInstance() {
         if (writer == null) writer = new ConsoleWriter();
 
