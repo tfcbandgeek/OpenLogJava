@@ -1,5 +1,7 @@
 package me.jgappsandgames.openlog;
 
+import java.util.Calendar;
+
 /**
  * ConsoleWriter Implements: Writer
  *
@@ -35,6 +37,8 @@ public class ConsoleWriter implements Writer {
         text.append("[")
                 .append(Config.getInstance().getPrefix())
                 .append("] ");
+
+        if (Config.getInstance().getTimeStamp()) text.append("<").append(Calendar.getInstance().getTime().toString()).append("> ");
 
         // Add the Code
         switch (code) {

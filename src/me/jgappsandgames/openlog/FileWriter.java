@@ -68,6 +68,8 @@ public class FileWriter implements Writer {
                 .append(Config.getInstance().getPrefix())
                 .append("] ");
 
+        if (Config.getInstance().getTimeStamp()) text.append("<").append(Calendar.getInstance().getTime().toString()).append("> ");
+
         // Add the Code
         switch (code) {
             // Log IInformation

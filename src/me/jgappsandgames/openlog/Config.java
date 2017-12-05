@@ -61,6 +61,13 @@ public class Config {
      */
     private String prefix;
 
+    /**
+     * Should the Date/Time Stamp be placed
+     *
+     * DEFAULT: false
+     */
+    private boolean time_stamp;
+
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Initializer ---- ---- ---- ---- ---- ---- ---- ---- ----
 
     /**
@@ -86,6 +93,8 @@ public class Config {
         debug = true;
 
         prefix = "OpenLog";
+
+        time_stamp = false;
     }
 
     /**
@@ -109,6 +118,10 @@ public class Config {
         primary_writer = ConsoleWriter.getInstance();
 
         this.debug = debug;
+
+        prefix = "OpenLog";
+
+        time_stamp = false;
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Getters ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -191,6 +204,16 @@ public class Config {
      */
     public String getPrefix() {
         return prefix;
+    }
+
+    /**
+     * getTimeStamp()
+     *
+     * Returns true if the Time Stamp should be placed
+     * @return
+     */
+    public boolean getTimeStamp() {
+        return time_stamp;
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -300,6 +323,16 @@ public class Config {
      */
     public Config setPrefix(String prefix) {
         this.prefix = prefix;
+        return this;
+    }
+
+    /**
+     * setTimeStamp(boolean)
+     * @param time_stamp
+     * @return
+     */
+    public Config setTimeStamp(boolean time_stamp) {
+        this.time_stamp = time_stamp;
         return this;
     }
 
