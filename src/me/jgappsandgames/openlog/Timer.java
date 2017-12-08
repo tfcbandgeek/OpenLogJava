@@ -13,8 +13,8 @@ public class Timer {
     }
 
     public void start() {
-        Config.getInstance().getPrimaryWriter().write(100, name, "Started");
-        Config.getInstance().getSecondaryWriter().write(100, name, "Started");
+        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(100, name, "Started");
+        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(100, name, "Started");
         end = 0;
         start = System.nanoTime();
     }
@@ -22,7 +22,7 @@ public class Timer {
     public void finish() {
         end = System.nanoTime();
         long t = end - start;
-        Config.getInstance().getPrimaryWriter().write(100, name, "Ran For " + String.valueOf(t));
-        Config.getInstance().getSecondaryWriter().write(100, name, "Ran For " + String.valueOf(t));
+        if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(100, name, "Ran For " + String.valueOf(t));
+        if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(100, name, "Ran For " + String.valueOf(t));
     }
 }
