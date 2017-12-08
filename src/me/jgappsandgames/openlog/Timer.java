@@ -16,12 +16,12 @@ public class Timer {
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(100, name, "Started");
         if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(100, name, "Started");
         end = 0;
-        start = System.nanoTime();
+        start = System.currentTimeMillis();
     }
 
     public void finish() {
-        end = System.nanoTime();
-        long t = end - start;
+        end = System.currentTimeMillis();
+        long t = (end - start) / 1000;
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(100, name, "Ran For " + String.valueOf(t));
         if (Config.getInstance().getSecondaryWriter() != null) Config.getInstance().getSecondaryWriter().write(100, name, "Ran For " + String.valueOf(t));
     }
