@@ -7,5 +7,5 @@ package me.jgappsandgames.openlog;
  */
 public class Build {
     public static final int build = 15;
-    public static final String version = "0.3.3";
+    public static final String version = "0.4.0";
 }

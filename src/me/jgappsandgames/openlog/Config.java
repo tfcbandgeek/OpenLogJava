@@ -1,6 +1,6 @@
 package me.jgappsandgames.openlog;
 
-// Java
+// Java Imports
 import java.io.File;
 
 /**
@@ -12,21 +12,29 @@ public class Config {
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- File Locations ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
      * Location for Saving the Master List for Logs, Exceptions, and Errors (Combined)
+     *
+     * DEFAULT: openlog/
      */
     private File all_file;
 
     /**
      * Location for Saving the Log File
+     *
+     * DEFAULT: openlog/
      */
     private File log_file;
 
     /**
      * Location for saving the Exception File
+     *
+     * DEFAULT: openlog/
      */
     private File except_file;
 
     /**
      * Location for saving the Error File
+     *
+     * DEFAULT: openlog/
      */
     private File error_file;
 
@@ -75,6 +83,7 @@ public class Config {
      *
      * Sets the Save Locations, Creates the Directory (If necessary), and sets the default writer
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private Config() {
         // Set Locations
         all_file = new File("openlog");
@@ -97,40 +106,12 @@ public class Config {
         time_stamp = false;
     }
 
-    /**
-     * Initializer
-     *
-     * Sets the Save Locations, Creates the Directory (If necessary), and sets the default writer
-     */
-    private Config(boolean debug) {
-        // Set Locations
-        all_file = new File("openlog");
-        log_file = new File("openlog");
-        except_file = new File("openlog");
-        error_file = new File("openlog");
-
-        // Create Directories if it does not exist yet
-        if (!all_file.isDirectory()) all_file.mkdirs();
-        if (!log_file.isDirectory()) log_file.mkdirs();
-        if (!except_file.isDirectory()) except_file.mkdirs();
-        if (!error_file.isDirectory()) error_file.mkdirs();
-
-        primary_writer = ConsoleWriter.getInstance();
-
-        this.debug = debug;
-
-        prefix = "OpenLog";
-
-        time_stamp = false;
-    }
-
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Getters ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
     /**
      * getAll()
      *
-     * Gets the Location for the Combined Save File
-     * @return
+     * @return All File Location
      */
     public File getAll() {
         return all_file;
@@ -139,8 +120,7 @@ public class Config {
     /**
      * getLog()
      *
-     * Gets the Log Location
-     * @return
+     * @return Log File Location
      */
     public File getLog() {
         return log_file;
@@ -149,8 +129,7 @@ public class Config {
     /**
      * getExcept()
      *
-     * Gets the Exception Save Location
-     * @return
+     * @return Except File Location
      */
     public File getExcept() {
         return except_file;
@@ -159,8 +138,7 @@ public class Config {
     /**
      * getError()
      *
-     * Gets the Error Save Location
-     * @return
+     * @return Error File Location
      */
     public File getError() {
         return error_file;
@@ -169,18 +147,25 @@ public class Config {
     /**
      * getPrimaryWriter()
      *
-     * Gets the Primary Writer
-     * @return
+     * @return The Primaray Writer or the secondary Wrier or a new Console Writer depending on there status
      */
     public Writer getPrimaryWriter() {
-        return primary_writer;
+        if (primary_writer != null) return primary_writer;
+        else if (secondary_writer != null) {
+            primary_writer = secondary_writer;
+            secondary_writer = null;
+            return primary_writer;
+        }
+        else {
+            primary_writer = ConsoleWriter.getInstance();
+            return primary_writer;
+        }
     }
 
     /**
      * getSecondaryWriter()
      *
-     * Gets the Secondary Writer
-     * @return
+     * @return The Secondary Writer
      */
     public Writer getSecondaryWriter() {
         return secondary_writer;
@@ -189,8 +174,7 @@ public class Config {
     /**
      * isDebug()
      *
-     * Returns if the is a Debug Run or Not
-     * @return
+     * @return true if it is a debug run
      */
     public boolean isDebug() {
         return debug;
@@ -199,8 +183,7 @@ public class Config {
     /**
      * getPrefix()
      *
-     * Returns the Library Prefix
-     * @return
+     * @return the prefix for the App
      */
     public String getPrefix() {
         return prefix;
@@ -209,8 +192,7 @@ public class Config {
     /**
      * getTimeStamp()
      *
-     * Returns true if the Time Stamp should be placed
-     * @return
+     * @return true if the time stamp should be placed
      */
     public boolean getTimeStamp() {
         return time_stamp;
@@ -318,8 +300,8 @@ public class Config {
 
     /**
      * setPrefix(String)
-     * @param prefix
-     * @return
+     * @param prefix the new PreFix
+     * @return this Config Instance, For chaining Commands
      */
     public Config setPrefix(String prefix) {
         this.prefix = prefix;
@@ -328,8 +310,8 @@ public class Config {
 
     /**
      * setTimeStamp(boolean)
-     * @param time_stamp
-     * @return
+     * @param time_stamp the New Status
+     * @return this Config Instance, For chaining commands
      */
     public Config setTimeStamp(boolean time_stamp) {
         this.time_stamp = time_stamp;
@@ -342,18 +324,6 @@ public class Config {
      */
     private static Config config;
 
-    /**
-     * generateConfig(File) Deprecated
-     *
-     * Generated the Config File with a certain File Selected for Everything
-     * @param location The Location to Save to
-     * @return The Config Instance, For Chaining Commands
-     */
-    @Deprecated
-    public static Config generateConfig(File location) {
-        if (!location.isDirectory()) location.mkdirs();
-        return new Config().setFiles(location);
-    }
 
     /**
      * getInstance()
