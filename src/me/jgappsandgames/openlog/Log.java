@@ -37,8 +37,8 @@ public class Log {
     /**
      * Write Verbose (Debug Level Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void v(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -50,8 +50,8 @@ public class Log {
     /**
      * Write Debug (Debug Level Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void d(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -63,8 +63,8 @@ public class Log {
     /**
      * Write Track (Debug Level Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void t(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -76,8 +76,8 @@ public class Log {
     /**
      * Write Info (Always)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void i(String key, String data) {
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(INFO, key, data);
@@ -87,8 +87,8 @@ public class Log {
     /**
      * Write Warn (Always)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void w(String key, String data) {
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(WARN, key, data);

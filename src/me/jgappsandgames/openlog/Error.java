@@ -22,8 +22,8 @@ public class Error {
     /**
      * Write Debug (Debug Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void d(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -35,8 +35,8 @@ public class Error {
     /**
      * Write Error (Always)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void e(String key, String data) {
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(ERROR, key, data);

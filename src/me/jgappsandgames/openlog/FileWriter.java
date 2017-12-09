@@ -191,7 +191,7 @@ public class FileWriter implements Writer {
      * getInstance()
      *
      * Called to get the FileWriter Instance
-     * @return
+     * @return The Filewriter Instance
      */
     public static FileWriter getInstance() {
         if (fileWriter == null) fileWriter = new FileWriter();

@@ -26,8 +26,8 @@ public class Exception {
     /**
      * Write Expected (Debug Level Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void e(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -39,8 +39,8 @@ public class Exception {
     /**
      * Write Fix (Debug Level Only)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void f(String key, String data) {
         if (Config.getInstance().isDebug()) {
@@ -52,8 +52,8 @@ public class Exception {
     /**
      * Write Problem (Always)
      *
-     * @param key
-     * @param data
+     * @param key Identifier for the Message
+     * @param data Message
      */
     public static void p(String key, String data) {
         if (Config.getInstance().getPrimaryWriter() != null) Config.getInstance().getPrimaryWriter().write(PROBLEM, key, data);

@@ -105,6 +105,7 @@ public class ConsoleWriter implements Writer {
     @Override
     public void clear() {
         // Does Nothing At the Moment
+        System.out.flush();
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton Instance ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -117,7 +118,7 @@ public class ConsoleWriter implements Writer {
      * getInstance()
      *
      * Gets the ConsoleWriter Instance
-     * @return
+     * @return The Config Instance
      */
     public static ConsoleWriter getInstance() {
         if (writer == null) writer = new ConsoleWriter();
