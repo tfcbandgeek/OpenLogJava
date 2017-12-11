@@ -335,4 +335,8 @@ public class Config {
         if (config == null) config = new Config();
         return config;
     }
+
+    public static boolean isLoaded() {
+        return config != null;
+    }
 }
