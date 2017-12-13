@@ -87,7 +87,7 @@ public class ConsoleWriter implements Writer {
 
         // Add the Key
         key = key + "                    ";
-        key = key.substring(0, 7);
+        key = key.substring(0, Config.getInstance().getKeyLength() - 1);
         key = "[" + key + "] ";
         text.append(key);
 

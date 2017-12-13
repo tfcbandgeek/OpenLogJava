@@ -6,6 +6,6 @@ package me.jgappsandgames.openlog;
  * Class that contains the Apps Current Build Information
  */
 public class Build {
-    public static final int build = 20;
-    public static final String version = "1.1.0";
+    public static final int build = 21;
+    public static final String version = "1.2.0";
 }

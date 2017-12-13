@@ -64,11 +64,10 @@ public class FileWriter implements Writer {
         StringBuilder text = new StringBuilder();
 
         // Add The Prefix
-        text.append("[")
-                .append(Config.getInstance().getPrefix())
-                .append("] ");
+        text.append("[").append(Config.getInstance().getPrefix()).append("] ");
 
-        if (Config.getInstance().getTimeStamp()) text.append("<").append(Calendar.getInstance().getTime().toString()).append("> ");
+        // Add The Date
+        if (Config.getInstance().getTimeStamp()) text.append("<").append(Calendar.getInstance().getTime().toString()).append(Calendar.getInstance().get(Calendar.MILLISECOND)).append("> ");
 
         // Add the Code
         switch (code) {
@@ -117,7 +116,7 @@ public class FileWriter implements Writer {
 
         // Add the Key
         key = key + "                    ";
-        key = key.substring(0, 7);
+        key = key.substring(0, Config.getInstance().getKeyLength() - 1);
         key = "[" + key + "] ";
         text.append(key);
 

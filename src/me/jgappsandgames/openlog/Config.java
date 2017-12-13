@@ -76,6 +76,13 @@ public class Config {
      */
     private boolean time_stamp;
 
+    /**
+     * Holds the Lenght that the Key Object should be cut at
+     *
+     * DEFAULT: 10
+     */
+    private int key_legnth;
+
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Initializer ---- ---- ---- ---- ---- ---- ---- ---- ----
 
     /**
@@ -104,6 +111,8 @@ public class Config {
         prefix = "OpenLog";
 
         time_stamp = false;
+
+        key_legnth = 10;
     }
 
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Getters ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
@@ -198,6 +207,15 @@ public class Config {
         return time_stamp;
     }
 
+    /**
+     * getKeyLength
+     *
+     * @return the Length of the Key Object
+     */
+    public int getKeyLength() {
+        return key_legnth;
+    }
+
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
      * setFiles(File)
@@ -207,6 +225,8 @@ public class Config {
      * @return The Config Instance, For Chaining Commands
      */
     public Config setFiles(File file) {
+        if (!file.isDirectory()) file.mkdirs();
+
         all_file = file;
         log_file = file;
         except_file = file;
@@ -222,6 +242,8 @@ public class Config {
      * @return The Config Instance, For Chaining Commands
      */
     public Config setAll(File file) {
+        if (!file.isDirectory()) file.mkdirs();
+
         all_file = file;
         return this;
     }
@@ -234,6 +256,8 @@ public class Config {
      * @return The Config Instance, For Chaining Commands
      */
     public Config setLog(File file) {
+        if (!file.isDirectory()) file.mkdirs();
+
         log_file = file;
         return this;
     }
@@ -246,6 +270,8 @@ public class Config {
      * @return The Config Instance, For Chaining Commands
      */
     public Config setExcept(File file) {
+        if (!file.isDirectory()) file.mkdirs();
+
         except_file = file;
         return this;
     }
@@ -258,6 +284,8 @@ public class Config {
      * @return The Config Instance, For Chaining Commands
      */
     public Config setError(File file) {
+        if (!file.isDirectory()) file.mkdirs();
+
         error_file = file;
         return this;
     }
@@ -315,6 +343,16 @@ public class Config {
      */
     public Config setTimeStamp(boolean time_stamp) {
         this.time_stamp = time_stamp;
+        return this;
+    }
+
+    /**
+     * setKeyLegnth(int)
+     * @param key_length the New Key Length
+     * @return this Config Instance, For Chaining Commands
+     */
+    public Config setKeyLength(int key_length) {
+        this.key_legnth = key_length;
         return this;
     }
 
