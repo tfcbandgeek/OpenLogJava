@@ -7,7 +7,9 @@ import java.io.File;
  * Config
  *
  * Holds the Config File for Open Log
+ * Version: 1.2.1
  */
+@SuppressWarnings({"ResultOfMethodCallIgnored", "unused"})
 public class Config {
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- File Locations ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**

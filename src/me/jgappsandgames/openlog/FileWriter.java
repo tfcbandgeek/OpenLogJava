@@ -9,6 +9,7 @@ import java.util.Calendar;
 /**
  * FileWriter Implements: Writer
  */
+@SuppressWarnings("unused")
 public class FileWriter implements Writer {
     // ---- ---- ---- ---- ---- ---- ---- ---- ---- Writers ---- ---- ---- ---- ---- ---- ---- ---- ----
     /**
