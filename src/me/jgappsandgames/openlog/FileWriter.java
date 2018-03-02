@@ -8,10 +8,12 @@ import java.util.Calendar;
 
 /**
  * FileWriter Implements: Writer
+ *
+ * Version: 1.3.1
  */
 @SuppressWarnings("unused")
 public class FileWriter implements Writer {
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Writers ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Writers ---------------------------------------------------------------------------------------------------------
     /**
      * The BufferedWriter Instance for the All Writer
      */
@@ -32,7 +34,7 @@ public class FileWriter implements Writer {
      */
     private BufferedWriter error;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Visible Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Visible Methods -------------------------------------------------------------------------------------------------
 
     /**
      * load()
@@ -174,7 +176,7 @@ public class FileWriter implements Writer {
         }
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Helper Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Helper Methods --------------------------------------------------------------------------------------------------
     /**
      * getDayString()
      *
@@ -187,7 +189,7 @@ public class FileWriter implements Writer {
                 String.valueOf(Calendar.getInstance().get(Calendar.MINUTE));
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Singleton Methods ------------------------------------------------------------------------------------------------
     /**
      * The FileWriter Instance
      */

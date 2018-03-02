@@ -7,9 +7,10 @@ import java.util.Calendar;
  * ConsoleWriter Implements: Writer
  *
  * Writes to the Console
+ * Version: 1.3.1
  */
 public class ConsoleWriter implements Writer {
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Visible Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Visible Methods -------------------------------------------------------------------------------------------------
 
     /**
      * load()
@@ -117,7 +118,7 @@ public class ConsoleWriter implements Writer {
         System.out.flush();
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton Instance ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Singleton Instance ----------------------------------------------------------------------------------------------
     /**
      * The ConsoleWriter Instance
      */

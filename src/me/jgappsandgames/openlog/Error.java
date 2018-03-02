@@ -4,11 +4,11 @@ package me.jgappsandgames.openlog;
  * Error Class
  *
  * The Error Class should be used to report when within the app that are not recoverable (The App Stops Execution Afterwards)
- * Version: 1.2.1
+ * Version: 1.3.1
  */
 @SuppressWarnings("unused")
 public class Error {
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Error Levels ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Error Levels ----------------------------------------------------------------------------------------------------
     /**
      * The Debug_Error Error Level (Lowest)
      */
@@ -19,7 +19,7 @@ public class Error {
      */
     public static final int ERROR = 22;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Write Methods ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Write Methods ---------------------------------------------------------------------------------------------------
 
     /**
      * Write Debug (Debug Only)

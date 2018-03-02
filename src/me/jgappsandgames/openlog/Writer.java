@@ -4,6 +4,7 @@ package me.jgappsandgames.openlog;
  * Writer Interface
  *
  * Interface for Various Writer Classes to be Used with the Log, Exception, and Error Classes
+ * Version: 1.3.1
  */
 @SuppressWarnings("unused")
 public interface Writer {

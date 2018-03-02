@@ -4,11 +4,11 @@ package me.jgappsandgames.openlog;
  * Log Class
  *
  * This Class should always be used to monitor what is going on with the application you want to Monitor
- * Version: 1.2.1
+ * Version: 1.3.1
  */
 @SuppressWarnings("unused")
 public class Log {
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Log Levels ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Log Levels ------------------------------------------------------------------------------------------------------
     /**
      * The Verbose Log Level (Lowest)
      */
@@ -34,8 +34,7 @@ public class Log {
      */
     public static final int WARN = 5;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Writers ---- ---- ---- ---- ---- ---- ---- ---- ----
-
+    // Writers ---------------------------------------------------------------------------------------------------------
     /**
      * Write Verbose (Debug Level Only)
      *

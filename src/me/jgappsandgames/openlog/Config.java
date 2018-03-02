@@ -7,11 +7,11 @@ import java.io.File;
  * Config
  *
  * Holds the Config File for Open Log
- * Version: 1.2.1
+ * Version: 1.3.1
  */
 @SuppressWarnings({"ResultOfMethodCallIgnored", "unused"})
 public class Config {
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- File Locations ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // File Locations --------------------------------------------------------------------------------------------------
     /**
      * Location for Saving the Master List for Logs, Exceptions, and Errors (Combined)
      *
@@ -40,7 +40,7 @@ public class Config {
      */
     private File error_file;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Writers ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Writers ---------------------------------------------------------------------------------------------------------
     /**
      * The Primary Writer for The Library
      *
@@ -55,7 +55,7 @@ public class Config {
      */
     private Writer secondary_writer;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Run Variables ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Run Variables ---------------------------------------------------------------------------------------------------
     /**
      * Mark True if this run is a debug run
      * More Log, Exception, Error Levels are Ran
@@ -79,13 +79,13 @@ public class Config {
     private boolean time_stamp;
 
     /**
-     * Holds the Lenght that the Key Object should be cut at
+     * Holds the Length that the Key Object should be cut at
      *
      * DEFAULT: 10
      */
-    private int key_legnth;
+    private int key_length;
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Initializer ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //  Initializer ----------------------------------------------------------------------------------------------------
 
     /**
      * Initializer
@@ -107,17 +107,14 @@ public class Config {
         if (!error_file.isDirectory()) error_file.mkdirs();
 
         primary_writer = ConsoleWriter.getInstance();
-
+        secondary_writer = null;
         debug = true;
-
         prefix = "OpenLog";
-
         time_stamp = false;
-
-        key_legnth = 10;
+        key_length = 10;
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Getters ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Getters ---------------------------------------------------------------------------------------------------------
 
     /**
      * getAll()
@@ -158,7 +155,7 @@ public class Config {
     /**
      * getPrimaryWriter()
      *
-     * @return The Primaray Writer or the secondary Wrier or a new Console Writer depending on there status
+     * @return The Primary Writer or the secondary Wrier or a new Console Writer depending on there status
      */
     public Writer getPrimaryWriter() {
         if (primary_writer != null) return primary_writer;
@@ -215,10 +212,10 @@ public class Config {
      * @return the Length of the Key Object
      */
     public int getKeyLength() {
-        return key_legnth;
+        return key_length;
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Setters ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Setters ---------------------------------------------------------------------------------------------------------
     /**
      * setFiles(File)
      *
@@ -349,16 +346,16 @@ public class Config {
     }
 
     /**
-     * setKeyLegnth(int)
+     * setKeyLength(int)
      * @param key_length the New Key Length
      * @return this Config Instance, For Chaining Commands
      */
     public Config setKeyLength(int key_length) {
-        this.key_legnth = key_length;
+        this.key_length = key_length;
         return this;
     }
 
-    // ---- ---- ---- ---- ---- ---- ---- ---- ---- Singleton ---- ---- ---- ---- ---- ---- ---- ---- ----
+    // Singleton -------------------------------------------------------------------------------------------------------
     /**
      * The Config Instance
      */
